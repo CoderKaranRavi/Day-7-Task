@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7 Task</title>
+</head>
+<body>
+    <h2> Solving problems using array functions on rest countries data (https://restcountries.com/v3.1/all).
+     </h2>
+
+     <h3>1) Get all the countries from Asia continent /region using Filter function </h3>
+fetch(https://restcountries.com/v3.1/all)<br>
+  .then(response => response.json())<br>
+  .then(data => {<br>
+    
+    <h4> Use the filter function to get countries from Asia</h4>
+    const asiaCountries = data.filter(country => {<br>
+      return country.region === 'Asia';<br>
+    });<br>
+
+    <h4>Log the list of Asia countries</h4>
+    console.log(asiaCountries);<br>
+  })<br>
+  .catch(error => console.error('Error fetching data:', error));<br>
+
+  <h3>2) Get all the countries with a population of less than 2 lakhs using Filter function </h3>
+
+fetch(apiUrl)<br>
+  .then(response => response.json())<br>
+  .then(data => {<br>
+    <h4> Use the filter function to get countries with population less than 200,000</h4>
+    const countriesWithLowPopulation = data.filter(country => {<br>
+      return country.population && country.population < 200000;<br>
+    });<br>
+
+    <h4> Log the list of countries with low population</h4>
+    console.log(countriesWithLowPopulation);<br>
+  })<br>
+  .catch(error => console.error('Error fetching data:', error));<br>
+
+  <h3>3) Print the following details name, capital, flag, using forEach function </h3>
+  fetch(apiUrl)<br>
+  .then(response => response.json())<br>
+  .then(data => {<br>
+    <h4>Use forEach to iterate through each country and print details</h4>
+    data.forEach(country => {<br>
+      console.log(`Name: ${country.name.common}`);<br>
+      console.log(`Capital: ${country.capital}`);<br>
+      console.log(`Flag: ${country.flags.svg}`);<br>
+      console.log('------------------------');<br>
+    });<br>
+  })<br>
+  .catch(error => console.error('Error fetching data:', error));<br>
+  <h3>4) Print the total population of countries using reduce function </h3>
+  fetch(apiUrl)<br>
+  .then(response => response.json())<br>
+  .then(data => {<br>
+    <h4>Use reduce to calculate the total population</h4>
+    const totalPopulation = data.reduce((acc, country) => {<br>
+      <h4>Check if the country has population data before adding</h4>
+      if (country.population) {<br>
+        return acc + country.population;<br>
+      } else {<br>
+        return acc;<br>
+      }<br>
+    }, 0);<br>
+
+    <h4>Log the total population</h4>
+    console.log<br>
+  .catch(error => console.error('Error fetching data:', error));<br>
+
+
+<h3>5) Print the country that uses US dollars as currency. </h3>
+  fetch(apiUrl)<br>
+  .then(response => response.json())<br>
+  .then(data => {<br>
+    <h4> Use filter to get the country that uses US dollars as currency </h4>
+    const usDollarCountry = data.filter(country => {<br>
+      return country.currencies && country.currencies.USD;<br>
+    });<br>
+
+    <h4>Log the country that uses US dollars</h4>
+    if (usDollarCountry.length > 0) {<br>
+      console.log('Country using US dollars:', usDollarCountry[0].name.common);<br>
+    } else {<br>
+      console.log('No country found using US dollars.');<br>
+    }<br>
+  })<br>
+  .catch(error => console.error('Error fetching data:', error));<br>
+
+
+</body>
+</html>
